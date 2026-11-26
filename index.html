@@ -5,147 +5,255 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Nucarn Games</title>
 <meta name="description" content="Nucarn is an independent game developer. Balloon Pop is out on Android.">
+<meta name="theme-color" content="#d3e9f6">
+<link rel="canonical" href="https://ncarreiro7.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Nucarn Games">
+<meta property="og:description" content="Nucarn is an independent game developer. Balloon Pop is out on Android.">
+<meta property="og:url" content="https://ncarreiro7.github.io/">
+<meta property="og:image" content="https://ncarreiro7.github.io/img/banner.png">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/svg+xml" href="img/logo.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="img/logo-32.png">
 <link rel="apple-touch-icon" href="img/logo-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Passion+One&family=Poppins:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Passion+One&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --sky: #6fb7e8;
-    --sky-deep: #3f8fd0;
+    color-scheme: light;
+    --bg: #d3e9f6;
+    --surface: #ffffff;
+    --surface-hover: #e4eff9;
     --ink: #1d2b4f;
-    --outline: #5a3a10;
-    --body: #f7c948;
-    --light: #fff1a8;
-    --shade: #c9952b;
-    --card: #ffffff;
     --muted: #4a5878;
+    --outline: #1d2b4f;
+    --outline-subtle: #bfd0e2;
+    --accent: #f7c948;
+    --accent-hover: #f9d25e;
+    --accent-border: #c9952b;
+    --card-shadow: 4px 5px 0 rgba(0, 0, 0, 0.15);
+    --elevation-2: 0 4px 10px rgba(29, 43, 79, 0.14), 0 8px 20px rgba(29, 43, 79, 0.08);
+    --motion-standard: cubic-bezier(0.2, 0, 0, 1);
   }
   * { box-sizing: border-box; }
   body {
     margin: 0;
-    background: #d3e9f6;
+    background: var(--bg);
     min-height: 100vh;
     color: var(--ink);
     font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
   }
-  img { image-rendering: pixelated; display: block; }
-  main { max-width: 760px; margin: 0 auto; padding: 32px 16px 48px; }
-  .title { font-family: "Poppins", system-ui, sans-serif; font-weight: 700; letter-spacing: 0.5px; }
+  img { display: block; max-width: 100%; }
+  .pixel { image-rendering: pixelated; }
+  .page { max-width: 760px; margin: 0 auto; padding: 36px 16px 48px; }
+  .title { font-family: "Poppins", system-ui, sans-serif; font-weight: 600; letter-spacing: -0.01em; }
   .brand { font-family: "Passion One", system-ui, sans-serif; font-weight: 400; }
-  header { text-align: center; color: #1a1618; margin-bottom: 28px; }
-  header h1 {
-    font-size: 56px; margin: 0; line-height: 1; letter-spacing: 3px; color: var(--ink);
-    text-shadow: none;
+  a:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; border-radius: 8px; }
+
+  header { text-align: center; margin-bottom: 32px; }
+  header .logo {
+    width: 120px; height: auto; margin: 0 auto 8px;
+    filter: drop-shadow(0 6px 14px rgba(29, 43, 79, 0.16));
   }
-  header p { margin: 6px 0 0; font-size: 17px; }
-  header .logo { width: 128px; height: auto; margin: 0 auto 4px; image-rendering: auto; filter: drop-shadow(3px 4px 0 rgba(0, 0, 0, 0.15)); }
+  header h1 {
+    font-size: 56px; margin: 0; line-height: 1; letter-spacing: 2.5px;
+    color: var(--ink);
+  }
+  header p {
+    margin: 8px 0 0; font-size: 16px;
+    color: var(--ink);
+  }
+
   .card {
-    background: var(--card);
+    background: var(--surface);
     border: 3px solid var(--outline);
     border-radius: 14px;
-    box-shadow: 4px 5px 0 rgba(0, 0, 0, 0.15);
+    box-shadow: var(--card-shadow);
     overflow: hidden;
   }
-  .banner { width: 100%; height: auto; border-bottom: 3px solid var(--outline); }
-  .game { padding: 20px; }
-  .title-row { display: flex; align-items: center; gap: 14px; }
-  .title-row img { width: 64px; height: 64px; border-radius: 14px; border: 2px solid var(--outline); }
-  .title-row h2 { margin: 0; font-size: 26px; }
-  .title-row span { color: var(--muted); font-size: 14px; }
-  .game > p { margin: 14px 0 18px; }
-  .button {
-    display: inline-block;
-    padding: 10px 22px 12px;
-    background: var(--body);
-    color: #fff;
-    text-decoration: none;
-    font-size: 17px;
-    border: 3px solid var(--outline);
-    border-radius: 12px;
-    box-shadow: inset 0 -4px 0 var(--shade), inset 3px 3px 0 var(--light), 2px 3px 0 rgba(0, 0, 0, 0.15);
-    text-shadow: 1px 0 var(--outline), -1px 0 var(--outline), 0 1px var(--outline), 0 -1px var(--outline), 1px 1px var(--outline);
+  .card + .card { margin-top: 24px; }
+  .card-body, .game { padding: 24px; }
+  .card-body h2 { margin: 0 0 12px; font-size: 22px; line-height: 1.3; }
+  .card-body p { margin: 0; color: var(--ink); }
+  .card-body p + p { margin-top: 12px; }
+
+  .banner {
+    width: 100%; height: auto;
+    border-bottom: 3px solid var(--outline);
   }
-  .button:hover { filter: brightness(1.05); }
-  .button:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
-  .policy-row { margin: 14px 0 0; font-size: 15px; }
-  .policy { color: var(--ink); }
-  .shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 22px; }
-  .shots img { width: 100%; height: auto; border-radius: 8px; border: 2px solid var(--outline); image-rendering: auto; }
-  .section, .game-card { margin-top: 24px; }
-  .section, .about { padding: 20px; }
-  .section h2, .about h2 { margin: 0 0 10px; font-size: 22px; }
-  .section p, .about p { margin: 0; }
-  .about p + p { margin-top: 12px; }
-  .slots { margin-top: 18px; }
+  .title-row { display: flex; align-items: center; gap: 16px; }
+  .title-row img {
+    width: 64px; height: 64px; flex-shrink: 0;
+    border-radius: 14px;
+    border: 2px solid var(--outline);
+  }
+  .title-row h2 { margin: 0; font-size: 26px; line-height: 1.2; }
+  .meta-line {
+    display: block; margin-top: 2px;
+    color: var(--muted); font-size: 14px;
+  }
+  .game > p {
+    margin: 16px 0 20px;
+    color: var(--ink);
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+  }
+  .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 48px;
+    padding: 0 24px;
+    background: var(--accent);
+    color: var(--ink);
+    text-decoration: none;
+    font-family: "Poppins", system-ui, sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: 0.01em;
+    border: 1px solid var(--accent-border);
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: background-color 0.2s var(--motion-standard), box-shadow 0.2s var(--motion-standard), transform 0.12s var(--motion-standard);
+  }
+  .button:hover {
+    background: var(--accent-hover);
+    box-shadow: var(--elevation-2);
+  }
+  .button:active { transform: scale(0.98); box-shadow: none; }
+  .button:focus-visible { border-radius: 9999px; }
+
+  .button-outlined {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0 20px;
+    background: transparent;
+    color: var(--ink);
+    text-decoration: none;
+    font-family: "Poppins", system-ui, sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    border: 1px solid var(--outline-subtle);
+    border-radius: 9999px;
+    transition: background-color 0.2s var(--motion-standard), transform 0.12s var(--motion-standard);
+  }
+  .button-outlined:hover { background: var(--surface-hover); }
+  .button-outlined:active { transform: scale(0.98); }
+  .button-outlined:focus-visible { border-radius: 9999px; }
+
+  .shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 24px; }
+  .shots img {
+    width: 100%; height: auto;
+    border-radius: 8px;
+    border: 2px solid var(--outline);
+  }
+
+  .slots { margin-top: 16px; }
   .slot {
-    height: 140px;
+    height: 88px;
     display: flex; align-items: center; justify-content: center;
     background: #1d2340;
-    border: 3px solid var(--outline);
+    border: 2px solid var(--outline);
     border-radius: 12px;
-    color: #6170a8;
-    font-size: 72px;
+    color: #8496c9;
+    font-size: 32px;
   }
-  footer { text-align: center; margin-top: 28px; color: #1a1618; font-size: 15px; }
-  footer a { color: #1a1618; }
+
+  footer {
+    text-align: center;
+    margin-top: 28px;
+    color: var(--ink);
+    font-size: 14px;
+  }
   footer p { margin: 4px 0; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .button, .button-outlined { transition: none; }
+    .button:active, .button-outlined:active { transform: none; }
+  }
   @media (max-width: 480px) {
     header h1 { font-size: 46px; }
-    header .logo { width: 104px; }
-    .game { padding: 16px; }
-    .shots { gap: 8px; }
+    header .logo { width: 100px; }
+    .card-body, .game { padding: 16px; }
+    .actions { flex-direction: column; align-items: stretch; }
+    .shots {
+      display: flex;
+      align-items: flex-start;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 10px;
+      padding-bottom: 4px;
+    }
+    .shots img {
+      flex: 0 0 68%;
+      scroll-snap-align: start;
+    }
   }
 </style>
 </head>
 <body>
-<main>
+<div class="page">
   <header>
-    <img class="logo" src="img/logo.svg" width="128" height="128" alt="Nucarn logo: a caravela sailing on the waves">
+    <img class="logo" src="img/logo.svg" width="128" height="128" alt="Nucarn logo: a caravela sailing on the waves" fetchpriority="high">
     <h1 class="brand">NUCARN</h1>
-    <p>Gaming Industry Enthusiast & Independent Game Developer</p>
+    <p>Gaming Industry Enthusiast &amp; Independent Game Developer</p>
   </header>
 
-  <section class="card about">
-    <h2 class="title">About me</h2>
-    <p>Video games have been a part of my life since I was little, starting with Pokémon Red on the original Game Boy collecting them all and gathering all 120 stars in Super Mario 64. That lifelong passion only grew over the years, spanning everything from falling in love all over again with the original Demon's Souls on the PS3, to diving into the latest releases of all kinds today.</p>
-    <p>I’ve always had ideas for games of my own swirling around in my head. After a lifetime of dreaming about what could be, I'm finally turning those visions into reality by releasing my very own first game.</p>
-  </section>
+  <main>
+    <section class="card card-body" aria-labelledby="about-heading">
+      <h2 id="about-heading" class="title">About me</h2>
+      <p>Video games have been a part of my life since I was little, starting with Pokémon Red on the original Game Boy collecting them all and gathering all 120 stars in Super Mario 64. That lifelong passion only grew over the years, spanning everything from falling in love all over again with the original Demon's Souls on the PS3, to diving into the latest releases of all kinds today.</p>
+      <p>I’ve always had ideas for games of my own swirling around in my head. After a lifetime of dreaming about what could be, I'm finally turning those visions into reality by releasing my very own first game.</p>
+    </section>
 
-  <article class="card game-card">
-    <img class="banner" src="img/banner.png" width="1024" height="500" alt="Balloon Pop: colourful pixel-art balloons floating in a blue sky">
-    <div class="game">
-      <div class="title-row">
-        <img src="img/icon.png" width="64" height="64" alt="">
-        <div>
-          <h2 class="title">Balloon Pop</h2>
-          <span>Android · Fully free, with an optional purchase to remove ads</span>
+    <article class="card game-card" aria-labelledby="balloon-pop-heading">
+      <img class="banner pixel" src="img/banner.png" width="1024" height="500" alt="Balloon Pop: colourful pixel-art balloons floating in a blue sky">
+      <div class="game">
+        <div class="title-row">
+          <img class="pixel" src="img/icon.png" width="64" height="64" alt="">
+          <div>
+            <h2 id="balloon-pop-heading" class="title">Balloon Pop</h2>
+            <span class="meta-line">Android · Fully free, with an optional purchase to remove ads</span>
+          </div>
+        </div>
+        <p>Pop balloons against the clock, level up and unlock special balloons! You have 3 minutes to score as high as you can. Every level brings a new upgrade, and special balloons blow up, freeze, slow down or flood the sky. Compare your score on the daily leaderboard and collect achievements with Google Play Games.</p>
+        <div class="actions">
+          <a class="button" href="https://play.google.com/store/apps/details?id=com.nucarn.balloonpop">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5 3.87v16.26c0 .84.91 1.36 1.63.93l13.54-8.13a1.08 1.08 0 0 0 0-1.86L6.63 2.94A1.08 1.08 0 0 0 5 3.87Z"/></svg>
+            Get it on Google Play
+          </a>
+          <a class="button-outlined" href="https://sites.google.com/view/nucarn-balloonpop-privacy/home">Privacy policy</a>
+        </div>
+        <div class="shots">
+          <img src="img/shot-rush.png" width="1080" height="1920" alt="A balloon rush with disco lights during a match" loading="lazy" decoding="async">
+          <img src="img/shot-sunset.png" width="1080" height="1920" alt="Balloons rising as the sky turns to sunset" loading="lazy" decoding="async">
+          <img src="img/shot-vortex.png" width="1080" height="1920" alt="A giant vortex balloon pulling other balloons in" loading="lazy" decoding="async">
         </div>
       </div>
-      <p>Pop balloons against the clock, level up and unlock special balloons! You have 3 minutes to score as high as you can. Every level brings a new upgrade, and special balloons blow up, freeze, slow down or flood the sky. Compare your score on the daily leaderboard and collect achievements with Google Play Games.</p>
-      <a class="button title"href="https://play.google.com/store/apps/details?id=com.nucarn.balloonpop">Get it on Google Play</a>
-      <div class="shots">
-        <img src="img/shot-rush.png" width="1080" height="1920" alt="A balloon rush with disco lights during a match" loading="lazy">
-        <img src="img/shot-sunset.png" width="1080" height="1920" alt="Balloons rising as the sky turns to sunset" loading="lazy">
-        <img src="img/shot-vortex.png" width="1080" height="1920" alt="A giant vortex balloon pulling other balloons in" loading="lazy">
-      </div>
-      <p class="policy-row"><a class="policy" href="https://sites.google.com/view/nucarn-balloonpop-privacy/home">Privacy policy</a></p>
-    </div>
-  </article>
+    </article>
 
-  <section class="card section">
-    <h2 class="title">Future projects</h2>
-    <p>More games are planned. Stay tuned!</p>
-    <div class="slots" aria-hidden="true">
-      <div class="slot title">?</div>
-    </div>
-  </section>
+    <section class="card card-body" aria-labelledby="future-heading">
+      <h2 id="future-heading" class="title">Future projects</h2>
+      <p>More games are planned. Stay tuned!</p>
+      <div class="slots" aria-hidden="true">
+        <div class="slot title">?</div>
+      </div>
+    </section>
+  </main>
 
   <footer>
     <p>Contact: nucarn.games (at) gmail.com</p>
   </footer>
-</main>
+</div>
 </body>
 </html>
